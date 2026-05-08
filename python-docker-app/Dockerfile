@@ -8,7 +8,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN useradd -m appuser
+RUN adduser --disabled-password appuser
 
 RUN chown -R appuser:appuser /app
 

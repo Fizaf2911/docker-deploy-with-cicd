@@ -6,7 +6,7 @@ COPY App.java .
 
 RUN javac App.java
 
-RUN useradd -m appuser
+RUN adduser --disabled-password appuser
 
 RUN chown -R appuser:appuser /app
 
