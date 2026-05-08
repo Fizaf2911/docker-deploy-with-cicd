@@ -68,8 +68,6 @@ services:
     cap_drop:
       - ALL
 
-    read_only: true
-
     networks:
       - app-network
 
