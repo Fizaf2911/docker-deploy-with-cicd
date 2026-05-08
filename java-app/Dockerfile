@@ -6,7 +6,9 @@ COPY App.java .
 
 RUN javac App.java
 
-RUN adduser --disabled-password appuser
+RUN yum install -y shadow-utils
+
+RUN useradd -m appuser
 
 RUN chown -R appuser:appuser /app
 
