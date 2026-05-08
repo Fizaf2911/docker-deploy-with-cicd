@@ -5,21 +5,73 @@ services:
   python:
     build: ./python-docker-app
 
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    networks:
+      - app-network
+
   node:
     build: ./node-docker-app
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    networks:
+      - app-network
 
   laravel:
     build: ./laravel-project/laravel
 
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    networks:
+      - app-network
+
   java:
     build: ./java-app
 
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    networks:
+      - app-network
+
   nginx:
     build: ./nginx
+
     ports:
       - "80:80"
+
     depends_on:
       - python
       - node
       - laravel
       - java
+
+    security_opt:
+      - no-new-privileges:true
+
+    cap_drop:
+      - ALL
+
+    read_only: true
+
+    networks:
+      - app-network
+
+networks:
+  app-network:
